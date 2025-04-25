@@ -145,12 +145,13 @@ export class Construction extends Router {
                 const fee = this.gasToVTHO(gas,this.env.config.baseGasPrice);
                 const blockRef = this.connex.blockRef;
                 const chainTag = this.env.config.chainTag;
+                const nonce = '0x' + randomBytes(8).toString('hex')
                 const response = {
                     metadata:{
                         blockRef:blockRef,
                         chainTag:chainTag,
                         gas:gas,
-                        nonce:'0x' + randomBytes(8).toString('hex')
+                        nonce:nonce
                     },
                     suggested_fee:[{
                         value:(fee * BigInt(-1)).toString(10),
